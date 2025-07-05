@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Prototype - AI Prototype Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>Vibe Prototype</h1>
+            </div>
+            <p class="tagline">Transform your ideas into prototypes with AI</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <form id="prototypeForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="prompt" class="form-label">
+                            <i class="fas fa-lightbulb"></i>
+                            Describe your prototype idea
+                        </label>
+                        <textarea 
+                            id="prompt" 
+                            name="prompt" 
+                            placeholder="Describe what you want to create... (e.g., 'Create a mobile app for food delivery with modern UI')"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file" class="form-label">
+                            <i class="fas fa-upload"></i>
+                            Upload Reference (Optional)
+                        </label>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <input type="file" id="file" name="file" accept=".pdf,.png,.jpg,.jpeg,.gif,.txt">
+                            <div class="file-upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop files here or <span class="browse-text">browse</span></p>
+                                <small>Supports: PDF, Images (PNG, JPG, JPEG, GIF), Text files</small>
+                            </div>
+                        </div>
+                        <div id="filePreview" class="file-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ai_model" class="form-label">
+                            <i class="fas fa-brain"></i>
+                            AI Model
+                        </label>
+                        <select id="ai_model" name="ai_model">
+                            <option value="groq">Groq AI (Llama)</option>
+                            <option value="ollama">Ollama (Local)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        <i class="fas fa-magic"></i>
+                        Generate Prototype
+                    </button>
+                </form>
+            </div>
+
+            <div class="output-section" id="outputSection" style="display: none;">
+                <div class="output-header">
+                    <h2><i class="fas fa-code"></i> Generated Prototype</h2>
+                    <button class="copy-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        Copy
+                    </button>
+                </div>
+                <div class="output-content" id="outputContent">
+                    <!-- Generated content will appear here -->
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Generating your prototype...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Vibe Prototype. Powered by AI.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
