@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width=2.55, initial initial-scale1">
+2.0,="head">
+ <initial width=e="width=device-widthscale.initial-1.0">
+
+    <title>Food Delivery</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 375px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #444;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background-color: #444;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav ul li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav a.active {
+            color: #ffd700;
+        }
+
+        /* Home Screen Styles */
+        .home-screen {
+            padding: 20px;
+        }
+
+        .popular-restaurants {
+            /*background-image: linear-gradient(to bottom, #333, #444);*/
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popular-restaurants h2 {
+            /*color: #ffd700;*/
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .restaurant-list li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .restaurant-list li img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Restaurant Listings Styles */
+        .restaurant-listings {
+            padding: 20px;
+        }
+
+        .filters {
+            background-color: #444;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .filters ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filters ul li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .filters a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Restaurant Profile Styles */
+        .restaurant-profile {
+            padding: 20px;
+        }
+
+        .menu-items {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-items li {
+            border-bottom: 1px solid #555;
+            padding: 10px;
+        }
+
+        .menu-items li img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Cart Functionality Styles */
+        .cart {
+            background-color: #444;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .cart ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart ul li {
+            /*border-bottom: 1px solid #555;*/
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Order Checkout Styles */
+        .order-checkout {
+            padding: 20px;
+        }
+
+        .delivery-address {
+            padding: 10px;
+            /*background-color: #444;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+        }
+
+        .delivery-address input {
+            background-color: #555;
+            color: white;
+
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        /* Order Tracking Styles */
+        .order-tracking {
+            padding: 20px;
+        }
+
+        .order-status {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .order-status p {
+            /*background-color: #444;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+        }
+
+        /* User Profile Styles */
+        .user-profile {
+            padding: 20px;
+        }
+
+        .user-info {
+            /*background-color: #444;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+            padding: 10px;
+        }
+
+        .user-info input {
+            background-color: #555;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Food Delivery</h1>
+    </header>
+
+   navigation <!--
+
+ Navigation Section -->
+
+ <!--
+    <div class="nav"> 
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Restaurants</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </div>
+
+    <!-- Home Screen Section -->
+    <div class="home-screen">
+        <h2>Popular Restaurants</h2>
+        <ul class="restaurant-list">
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>Pizza Hut</span>
+            </li>
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>McDonald's</span>
+            </li>
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>KFC</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Restaurant Listings Section -->
+    <div class="restaurant-listings">
+        <div class="filters">
+            <ul>
+                <li><a href="#">All</a></li>
+                <li><a href="#">Pizza</a></li>
+                <li><a href="#">Burger</a></li>
+                <li><a href="#">Chinese</a></li>
+            </ul>
+        </div>
+        <ul class="restaurant-list">
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>Pizza Hut</span>
+            </li>
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>McDonald's</span>
+            </li>
+            <li>
+                <img src="https://picsum.photos/50/50" alt
+>P:(zKenn KFC</spanK
+
+<|header_start|> </li>
+
+        </ul>
+    </div>
+
+    <!-- Restaurant Profile Section -->
+    <div class="restaurant-profile">
+        <h2>McDonald's</h2>
+        <ul class="menu-items">
+            <li>
+                <img src="https://picsum.photos/50/50" alt="">
+                <span>McBurger</span>
+                <span>$10.99</span>
+li id            <:
+assistant     _ 
+
+</assistant
+<
+
+
+
+.
+assistant<|<|header_start|>assistant|>
+
+            </<|header_start|>
+
+
+
+       
+
+
+
+</li >>
+:
+
+
+</ul> </div>    <!-- Cart Functionality Section -->
+    <div class="cart">
+        <ul>
+            <li>
+                <span>McBurger</span>
+                <span>$10.99x 2</span>
+            </li>
+            <li>
+                <span>Total:</span>
+                <span>$21.98</span>
+            </li 7
+        </ul>
+    </div>
+
+    <!-- Order Checkout Section -->
+    <div class="order-checkout">
+        <h2> Delivery Address</h2>
+        <div class="delivery-address">
+            <input type="text" placeholder="Enter address">
+        </div>
+        <h2>Payment Method</h2>
+        <div class="payment-method">
+            <select>
+                <option value="">Cash</option>
+                <option value="">Card</option>
+            </select>    
+        </div>
+    </div>
+
+    <!-- Order Tracking Section -->
+    <div class="order-tracking">
+        <h2>Order Status</h2>
+        <div class="order-status">
+            <p>Order Placed</p>
+        </div>
+    </div>
+
+    <!-- User Profile Section -->
+    <div class="user-profile">
+        <h2>User Info</h2>
+        <div class="user-info">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

@@ -69,14 +69,53 @@
 
             <div class="output-section" id="outputSection" style="display: none;">
                 <div class="output-header">
-                    <h2><i class="fas fa-code"></i> Generated Prototype</h2>
-                    <button class="copy-btn" id="copyBtn">
-                        <i class="fas fa-copy"></i>
-                        Copy
+                    <h2><i class="fas fa-mobile-alt"></i> Generated Prototype</h2>
+                    <div class="output-controls">
+                        <button class="view-btn" id="viewBtn">
+                            <i class="fas fa-eye"></i>
+                            Preview
+                        </button>
+                        <button class="copy-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            Copy Code
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="prototype-tabs">
+                    <button class="tab-btn active" data-tab="preview">
+                        <i class="fas fa-mobile-alt"></i>
+                        Preview
+                    </button>
+                    <button class="tab-btn" data-tab="code">
+                        <i class="fas fa-code"></i>
+                        Code
                     </button>
                 </div>
-                <div class="output-content" id="outputContent">
-                    <!-- Generated content will appear here -->
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="previewTab">
+                        <div class="mobile-frame">
+                            <div class="mobile-header">
+                                <div class="mobile-notch"></div>
+                                <div class="mobile-status">
+                                    <span class="time">9:41</span>
+                                    <div class="mobile-icons">
+                                        <i class="fas fa-signal"></i>
+                                        <i class="fas fa-wifi"></i>
+                                        <i class="fas fa-battery-three-quarters"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <iframe id="prototypeFrame" src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="codeTab">
+                        <div class="output-content" id="outputContent">
+                            <!-- Generated code will appear here -->
+                        </div>
+                    </div>
                 </div>
             </div>
 

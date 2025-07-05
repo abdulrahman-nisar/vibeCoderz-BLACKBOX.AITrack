@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, initial-scale=1.0">
+    <title>Mobile Ecommerce App</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: #333;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        /* Button Styles */
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #444;
+        }
+        
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        /* Product List Styles */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .product {
+            background-color: #fff;
+            margin: 16px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: calc(50% - 16px);
+        }
+        
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 16px;
+            text-align: center;
+            clear: both;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .product {
+                width: calc(33.33% - 16px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mobile Ecommerce App</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Cart</a>
+        <a href="#">Account</a>
+    </nav>
+    <main>
+        <form>
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </form>
+        <div class="product-list">
+            <div class="product">
+                <img src="https://picsum.photos/200/300" alt="Product Image">
+                <h2>Product 1</h2>
+                <p>$19.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://picsum.photos/200/301" alt="Product Image">
+                <h2>Product 2</h2>
+                <p>$29.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://picsum.photos/200/302" alt="Product Image">
+                <h2>Product 3</h2>
+                <p>$39.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Mobile Ecommerce App</p>
+    </footer>
+    <script>
+        // Add event listener to search button
+        document.querySelector('button[type="submit"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Searching for products...');
+        });
+        
+        // Add event listener to add to cart buttons
+        document.querySelectorAll('.product button').forEach((button) => {
+            button.addEventListener('click', () => {
+                alert('Product added to cart!');
+            });
+        });
+    </script>
+</html>

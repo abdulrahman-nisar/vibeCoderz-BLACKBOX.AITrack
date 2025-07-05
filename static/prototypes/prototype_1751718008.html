@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">Food Delivery App</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#restaurant-listings">Restaurant Listings</a></li>
+                <li><a href="#cart-functionality">Cart</a></li>
+                <li><a href="#order-checkout">Order Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Screen -->
+    <section id="home" class="home-screen">
+        <h1>Welcome to Food Delivery App!</h1>
+        <button class="search-button">Search Restaurants</button>
+        <div class="popular-restaurants">
+            <img src="restaurant1.jpg" alt="Restaurant 1">
+            <img src="restaurant2.jpg" alt="Restaurant 2">
+            <img src="restaurant3.jpg" alt="Restaurant 3">
+        </div>
+    </section>
+
+    <!-- Restaurant Listings -->
+    <section id="restaurant-listings" class="restaurant-listings">
+        <h1>Restaurant Listings</h1>
+        <form>
+            <label for="cuisine">Cuisine:</label>
+            <select id="cuisine" name="cuisine">
+                <option value="">All</option>
+                <option value="Italian">Italian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Indian">Indian</option>
+            </select>
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating">
+                <option value="">All</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+            </select>
+            <label for="price">Price:</label>
+            <select id="price" name="price">
+                <option value="">All</option>
+                <option value="$">Under $10</option>
+                <option value="$$">$10-$20</option>
+                <option value="$$$">$20+</option>
+            </select>
+        </form>
+        <ul class="restaurant-list">
+            <!-- Restaurant 1 -->
+            <li>
+                <img src="restaurant1.jpg" alt="Restaurant 1">
+                <h2>Restaurant 1</h2>
+                <p>Cuisine: Italian, Rating: 4.5/5, Price: $$$</p>
+            </li>
+            <!-- Restaurant 2 -->
+            <li>
+                <img src="restaurant2.jpg" alt="Restaurant 2">
+                <h2>Restaurant 2</h2>
+                <p>Cuisine: Chinese, Rating: 4.8/5, Price: $$$$</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Restaurant Profile -->
+    <section id="restaurant-profile" class="restaurant-profile">
+        <h1>Restaurant Profile</h1>
+        <div class="menu-items">
+            <!-- Menu Item 1 -->
+            <div class="menu-item">
+                <img src="menuitem1.jpg" alt="Menu Item 1">
+                <p>Item Name: Chicken Pizza, Price: $15.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!-- Menu Item 2 -->
+            <div class="menu-item">
+                <img src="menuitem2.jpg" alt="Menu Item 2">
+                <p>Item Name: Vegetable Salad, Price: $8.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <h2>Working Hours:</h2>
+        <p>Monday - Thursday: 11am - 10pm, Friday - Saturday: 11am - 11pm, Sunday: 12pm - 9pm</p>
+        <h2>Delivery Fee:</h2>
+        <p>$5.00 per order</p>
+    </section>
+
+    <!-- Cart Functionality -->
+    <section id="cart-functionality" class="cart-functionality">
+        <h1>Cart</h1>
+        <div class="cart-items">
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="menuitem1.jpg" alt="Menu Item 1">
+                <p>Item Name: Chicken Pizza, Price: $15.00, Quantity: 2</p>
+                <button class="remove-from-cart">Remove from Cart</button>
+            </div>
+        </div>
+        <h2>Total:</h2>
+        <p>$30.00</p>
+    </section>
+
+    <!-- Order Checkout -->
+    <section id="order-checkout" class="order-checkout">
+        <h1>Order Checkout</h1>
+        <form>
+            <label for="delivery-address">Delivery Address:</label>
+            <input type="text" id="delivery-address" name="delivery-address">
+            <label for="contact-number">Contact Number:</label>
+            <input type="tel" id="contact-number" name="contact-number">
+            <button class="place-order">Place Order</button>
+        </form>
+    </section>
+
+    <!-- Order Tracking -->
+    <section id="order-tracking" class="order-tracking">
+        <h1>Order Tracking</h1>
+        <div class="order-status">
+            <p>Order Placed: 10 minutes ago, Preparing: 5 minutes, On the Way: 2 minutes</p>
+            <button class="track-order">Track Order</button>
+        </div>
+    </section>
+
+    <!-- User Profile -->
+    <section id="user-profile" class="user-profile">
+        <h1>User Profile</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <button class="save-profile">Save Profile</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="copyright">Copyright 2023 Food Delivery App. All Rights Reserved.</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#restaurant-listings">Restaurant Listings</a></li>
+            <li><a href="#cart-functionality">Cart</a></li>
+            <li><a href="#order-checkout">Order Checkout</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

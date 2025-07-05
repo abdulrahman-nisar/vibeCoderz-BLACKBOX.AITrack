@@ -82,6 +82,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and panes
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding pane
+            this.classList.add('active');
+            document.getElementById(targetTab + 'Tab').classList.add('active');
+        });
+    });
+
     // Form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -109,8 +127,22 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                outputContent.textContent = data.response;
+                // Display the code in the code tab
+                outputContent.textContent = data.html_code;
+                
+                // Load the prototype in the iframe
+                const prototypeFrame = document.getElementById('prototypeFrame');
+                prototypeFrame.src = data.prototype_url;
+                
+                // Show output section and switch to preview tab
                 outputSection.style.display = 'block';
+                
+                // Switch to preview tab by default
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                document.querySelector('[data-tab="preview"]').classList.add('active');
+                document.getElementById('previewTab').classList.add('active');
+                
                 showMessage('Prototype generated successfully!', 'success');
                 
                 // Scroll to output
