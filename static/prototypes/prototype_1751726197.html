@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #f1c40f;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--light-color);
+            background-color: var(--dark-color);
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 20px;
+            text-align: center;
+        }
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header nav ul li {
+            margin-right: 20px;
+        }
+        .header nav a {
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        .header nav a:hover {
+            color: var(--secondary-color);
+        }
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: calc(33.33% - 20px);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .card .content {
+            padding: 20px;
+        }
+        .card .content h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .card .content p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .card .content button {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card .content button:hover {
+            background-color: var(--secondary-color);
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Restaurants</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="main-content">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Restaurant Image">
+                <div class="content">
+                    <h2>Restaurant Name</h2>
+                    <p>4.5/5 - $10 Delivery Fee</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Restaurant Image">
+                <div class="content">
+                    <h2>Restaurant Name</h2>
+                    <p>4.5/5 - $10 Delivery Fee</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x150" alt="Restaurant Image">
+                <div class="content">
+                    <h2>Restaurant Name</h2>
+                    <p>4.5/5 - $10 Delivery Fee</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Add interactivity to buttons
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('Button clicked!');
+                // Add functionality here
+            });
+        });
+    </script>
+</body>
+</html>

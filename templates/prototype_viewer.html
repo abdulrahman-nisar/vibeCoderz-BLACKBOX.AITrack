@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .tabs {
+            display: flex;
+            background-color: #333;
+            color: white;
+        }
+        .tab-button {
+            padding: 14px 20px;
+            background-color: #555;
+            border: none;
+            color: white;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+        }
+        .tab-button:hover {
+            background-color: #777;
+        }
+        .tab-button.active {
+            background-color: #4CAF50;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #code-content {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            max-height: 70vh;
+            overflow: auto;
+        }
+        #preview-content {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('code')">Code</button>
+        <button class="tab-button" onclick="openTab('preview')">Preview</button>
+    </div>
+
+    <div id="code" class="tab-content active">
+        <button class="copy-button" onclick="copyCode()">Copy Code</button>
+        <pre id="code-content">{{ html_code }}</pre>
+    </div>
+
+    <div id="preview" class="tab-content">
+        <iframe id="preview-content" src="{{ prototype_url }}"></iframe>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            // Show the current tab, and mark its button as active
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function copyCode() {
+            const codeContent = document.getElementById('code-content').innerText;
+            navigator.clipboard.writeText(codeContent)
+                .then(() => {
+                    alert('Code copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>

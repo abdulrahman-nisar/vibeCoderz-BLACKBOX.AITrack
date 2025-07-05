@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #f1c40f;
+            --dark-color: #2f3436;
+            --light-color: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--light-color);
+            background-color: var(--dark-color);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--dark-color);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header nav ul li {
+            margin-right: 20px;
+        }
+
+        .header nav a {
+            color: var(--light-color);
+            text-decoration: none;
+        }
+
+        .header nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            background-image: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            padding: 100px;
+            text-align: center;
+            color: var(--light-color);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .feature {
+            background-color: var(--dark-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 14px;
+        }
+
+        .restaurant-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .restaurant {
+            background-color: var(--dark-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .restaurant h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .restaurant p {
+            font-size: 14px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .restaurant-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .restaurant-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Restaurants</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <h1>Food Delivery App</h1>
+        <p>Order food online from your favorite restaurants</p>
+        <button>Order Now</button>
+    </section>
+    <section class="features">
+        <div class="feature">
+            <h2>Feature 1</h2>
+            <p>This is feature 1</p>
+        </div>
+        <div class="feature">
+            <h2>Feature 2</h2>
+            <p>This is feature 2</p>
+        </div>
+        <div class="feature">
+            <h2>Feature 3</h2>
+            <p>This is feature 3</p>
+        </div>
+    </section>
+    <section class="restaurant-list">
+        <div class="restaurant">
+            <h2>Restaurant 1</h2>
+            <p>This is restaurant 1</p>
+        </div>
+        <div class="restaurant">
+            <h2>Restaurant 2</h2>
+            <p>This is restaurant 2</p>
+        </div>
+        <div class="restaurant">
+            <h2>Restaurant 3</h2>
+            <p>This is restaurant 3</p>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2023 Food Delivery App</p>
+    </footer>
+
+    <script>
+        // Add interactivity and animations here
+        const heroButton = document.querySelector('.hero button');
+        heroButton.addEventListener('click', () => {
+            alert('Order now clicked!');
+        });
+
+        const features = document.querySelectorAll('.feature');
+        features.forEach((feature) => {
+            feature.addEventListener('mouseover', () => {
+                feature.style.transform = 'scale(1.1)';
+            });
+            feature.addEventListener('mouseout', () => {
+                feature.style.transform = 'scale(1)';
+            });
+        });
+
+        const restaurants = document.querySelectorAll('.restaurant');
+        restaurants.forEach((restaurant) => {
+            restaurant.addEventListener('mouseover', () => {
+                restaurant.style.transform = 'scale(1.1)';
+            });
+            restaurant.addEventListener('mouseout', () => {
+                restaurant.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

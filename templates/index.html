@@ -3,133 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe Prototype - AI Prototype Generator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Web Application Prototype Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .error {
+            background-color: #ffecec;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+        .success {
+            background-color: #e8f7ee;
+            color: #27ae60;
+            border: 1px solid #27ae60;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-                <h1>Vibe Prototype</h1>
+        <h1>Web Application Prototype Generator</h1>
+        <form id="generateForm">
+            <div class="form-group">
+                <label for="prompt">Application Description:</label>
+                <textarea id="prompt" name="prompt" placeholder="Describe the web application you want to create..." required></textarea>
             </div>
-            <p class="tagline">Transform your ideas into prototypes with AI</p>
-        </header>
-
-        <main class="main-content">
-            <div class="input-section">
-                <form id="prototypeForm" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="prompt" class="form-label">
-                            <i class="fas fa-lightbulb"></i>
-                            Describe your prototype idea
-                        </label>
-                        <textarea 
-                            id="prompt" 
-                            name="prompt" 
-                            placeholder="Describe what you want to create... (e.g., 'Create a mobile app for food delivery with modern UI')"
-                            required
-                        ></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="file" class="form-label">
-                            <i class="fas fa-upload"></i>
-                            Upload Reference (Optional)
-                        </label>
-                        <div class="file-upload-area" id="fileUploadArea">
-                            <input type="file" id="file" name="file" accept=".pdf,.png,.jpg,.jpeg,.gif,.txt">
-                            <div class="file-upload-content">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Drag & drop files here or <span class="browse-text">browse</span></p>
-                                <small>Supports: PDF, Images (PNG, JPG, JPEG, GIF), Text files</small>
-                            </div>
-                        </div>
-                        <div id="filePreview" class="file-preview"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ai_model" class="form-label">
-                            <i class="fas fa-brain"></i>
-                            AI Model
-                        </label>
-                        <select id="ai_model" name="ai_model">
-                            <option value="groq">Groq AI (Llama)</option>
-                            <option value="ollama">Ollama (Local)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="generate-btn" id="generateBtn">
-                        <i class="fas fa-magic"></i>
-                        Generate Prototype
-                    </button>
-                </form>
+            
+            <div class="form-group">
+                <label for="file">Upload Reference File (Optional):</label>
+                <input type="file" id="file" name="file">
+                <small>Allowed formats: txt, pdf, png, jpg, jpeg, gif</small>
             </div>
-
-            <div class="output-section" id="outputSection" style="display: none;">
-                <div class="output-header">
-                    <h2><i class="fas fa-mobile-alt"></i> Generated Prototype</h2>
-                    <div class="output-controls">
-                        <button class="view-btn" id="viewBtn">
-                            <i class="fas fa-eye"></i>
-                            Preview
-                        </button>
-                        <button class="copy-btn" id="copyBtn">
-                            <i class="fas fa-copy"></i>
-                            Copy Code
-                        </button>
+            
+            <div class="form-group">
+                <label>AI Model:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="groq" name="ai_model" value="groq" checked>
+                        <label for="groq">Groq</label>
                     </div>
-                </div>
-                
-                <div class="prototype-tabs">
-                    <button class="tab-btn active" data-tab="preview">
-                        <i class="fas fa-mobile-alt"></i>
-                        Preview
-                    </button>
-                    <button class="tab-btn" data-tab="code">
-                        <i class="fas fa-code"></i>
-                        Code
-                    </button>
-                </div>
-                
-                <div class="tab-content">
-                    <div class="tab-pane active" id="previewTab">
-                        <div class="mobile-frame">
-                            <div class="mobile-header">
-                                <div class="mobile-notch"></div>
-                                <div class="mobile-status">
-                                    <span class="time">9:41</span>
-                                    <div class="mobile-icons">
-                                        <i class="fas fa-signal"></i>
-                                        <i class="fas fa-wifi"></i>
-                                        <i class="fas fa-battery-three-quarters"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <iframe id="prototypeFrame" src="" frameborder="0"></iframe>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane" id="codeTab">
-                        <div class="output-content" id="outputContent">
-                            <!-- Generated code will appear here -->
-                        </div>
+                    <div class="radio-option">
+                        <input type="radio" id="ollama" name="ai_model" value="ollama">
+                        <label for="ollama">Ollama</label>
                     </div>
                 </div>
             </div>
-
-            <div class="loading" id="loading" style="display: none;">
-                <div class="spinner"></div>
-                <p>Generating your prototype...</p>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <p>&copy; 2024 Vibe Prototype. Powered by AI.</p>
-        </footer>
+            
+            <button type="submit">Generate Prototype</button>
+        </form>
+        
+        <div id="message"></div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        document.getElementById('generateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Redirect to the prototype viewer
+                    window.location.href = data.viewer_url;
+                } else {
+                    showMessage(`Error: ${data.error}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Network error: ${error.message}`, 'error');
+            }
+        });
+        
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = type;
+            messageDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>

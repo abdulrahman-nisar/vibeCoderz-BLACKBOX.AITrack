@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for
+
 import os
 import time
 import re
@@ -44,23 +45,27 @@ def generate_prototype():
         if not prompt:
             return jsonify({'error': 'Please provide a prompt'}), 400
         
-        # Enhanced prompt for mobile app prototype generation
+        # Enhanced prompt for web application prototype generation
         enhanced_prompt = f"""
-        Create a complete mobile app prototype based on this description: {prompt}
+        Create a complete web application prototype based on this description: {prompt}
         
         Requirements:
         1. Generate a complete HTML file with embedded CSS and JavaScript
-        2. Design should be mobile-first and responsive
-        3. Use modern mobile UI patterns and components
-        4. Include interactive elements where appropriate
-        5. Use a mobile viewport (375px width)
-        6. Include proper styling for buttons, forms, navigation, etc.
-        7. Make it look like a real mobile app interface
-        8. Mobile app should be functional and visually appealing
-        9. Use pictures and icons where necessary
-        10. Use Data,information and content from the internet to enhance the prototype
-        11.You can also generate pictures and icons using AI if necessary
-        12. use javascript to add interactivity and functionality
+        2. Design should be modern and professional for desktop/web browsers
+        3. Use modern web UI patterns and components (navigation bars, sidebars, cards, grids, etc.)
+        4. Include interactive elements and functionality where appropriate
+        5. Use responsive design that works well on desktop, tablet, and mobile devices
+        6. Include proper styling for buttons, forms, navigation, headers, footers, content areas
+        7. Make it look like a professional web application with proper layout and spacing
+        8. Web application should be functional, interactive, and visually appealing
+        9. Use appropriate images, icons, and visual elements (you can use placeholder services)
+        10. Include real data, information and content to make it realistic
+        11. Use JavaScript to add interactivity, animations, and dynamic functionality
+        12. Include modern web design trends (clean layouts, proper typography, color schemes, hover effects, etc.)
+        13. Make it suitable for desktop browsers with full-width layouts and proper spacing
+        14. Use semantic HTML structure and modern CSS techniques (flexbox, grid, etc.)
+        15. Include proper viewport meta tag for responsive design
+        16. Make the interface intuitive and user-friendly for web users
 
         
         Please provide ONLY the complete HTML code with embedded CSS and JavaScript. 
@@ -95,8 +100,10 @@ def generate_prototype():
             'success': True,
             'html_code': html_code,
             'prototype_url': f'/static/prototypes/{prototype_filename}',
+            'viewer_url': f'/prototype/{prototype_filename}',
             'uploaded_file': uploaded_file
         })
+
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -117,29 +124,53 @@ def extract_html_code(text):
     if '<html' in text.lower() or '<body' in text.lower():
         return text
     else:
-        # Create a basic mobile app template with the generated content
+        # Create a basic web application template with the generated content
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile App Prototype</title>
+    <title>Web Application Prototype</title>
     <style>
         body {{
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            max-width: 375px;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #333;
+        }}
+        .container {{
+            max-width: 1200px;
             margin: 0 auto;
-            min-height: 100vh;
+            padding: 20px;
         }}
     </style>
 </head>
 <body>
-    {text}
+    <div class="container">
+        {text}
+    </div>
 </body>
 </html>"""
+
+@app.route('/prototype/<filename>')
+def view_prototype(filename):
+    # Construct the path to the prototype file
+    prototype_path = os.path.join('static', 'prototypes', filename)
+    
+    # Check if the file exists
+    if not os.path.exists(prototype_path):
+        return "Prototype not found", 404
+    
+    # Read the HTML content
+    with open(prototype_path, 'r', encoding='utf-8') as f:
+        html_code = f.read()
+    
+    # Get the URL for the prototype for the iframe
+    prototype_url = url_for('static', filename=f'prototypes/{filename}')
+    
+    return render_template('prototype_viewer.html', html_code=html_code, prototype_url=prototype_url)
 
 if __name__ == '__main__':
     app.run(debug=True)
