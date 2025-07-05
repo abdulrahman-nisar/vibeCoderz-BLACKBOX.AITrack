@@ -1,4 +1,5 @@
 from api import ollama_ai,groq_ai
+import requests
 
 completion = groq_ai("What is the capital of France?")
 for chunk in completion:
@@ -6,4 +7,3 @@ for chunk in completion:
 
 var = ollama_ai("What is the capital of France?")
 print(var)  
-
